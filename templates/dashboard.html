@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard user</title>
+    <style>
+        .button{
+            height: 30px;
+            width: 250px;
+            color: #fff;
+            border: 0px solid;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;       
+        }
+        .navig{
+            background-color: cornflowerblue;
+            padding: 5px;
+            text-align: left;
+            align-items: center;
+            border: 1px solid #000;
+            width: 50%;
+            font-size: 20px;
+        }
+
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.search {
+  width: 100%;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  margin-top: 50px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+    </style>
+</head>
+<body>
+    <form action="dashboard" method="post">
+        <button id="user" class="button" name="button" value="user" style="background-color: deeppink;">User</button>
+        <button id="dirs" name="button" class="button" value="directories" style="background-color: blue;">directories</button>
+        <button id="files" name="button" value="files" class="button" style="background-color: red;">files</button>
+        <button id="space" name="button" value="space" class="button" style="background-color: green;">space</button>
+        <button id="download" name="button" value="download" class="button" style="background-color: black;color: #fff;">Download</button>
+        <center>
+            <div class="wrap">
+                <div class="search">
+                   <input type="text" name="search" class="searchTerm" placeholder="What are you looking for?">
+                   <button type="submit" id="find" class="searchButton" name="button" value="find">
+                     find
+                  </button>
+                </div>
+             </div>
+        <label style="font-size: 25px;font-weight: bold;color: red;margin-top: 20px ;margin-bottom: 20px;">{{ var }}</label>
+        </center>
+        <ul style="margin-top: 80px;">
+        {% for dir in dirs %}
+        <li><button name="button" value="{{ dir }}" class="navig">{{ dir }}</button></li>
+        {% endfor %}
+    </form>
+</body>
+</html>
